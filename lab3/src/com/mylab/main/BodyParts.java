@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.mylab.main;
 
 public enum BodyParts {
@@ -7,13 +6,3 @@ public enum BodyParts {
     TEETH,
     CHEEKS;
 }
-=======
-package com.mylab.main;
-
-public enum BodyParts {
-    HANDS,
-    NOSE,
-    TEETH,
-    CHEEKS;
-}
->>>>>>> f959aaf (lab5)
