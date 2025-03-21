@@ -1,0 +1,86 @@
+package com.mylab.main;
+
+import java.util.ArrayList;
+
+public class Story {
+    public static void main(String[] args) throws NoArgsException {
+        Things things = new Things("Вещи");
+        Scooperfield scooperfield = new Scooperfield("Скуперфильд",null,new ArrayList<>(), new ArrayList<>());
+        StateHappy stateHappy = new StateHappy(scooperfield,"\"Радостное\"");
+        scooperfield.addBodyParts(BodyParts.TEETH,BodyParts.CHEEKS,BodyParts.HANDS,BodyParts.HEAD,BodyParts.NOSE);
+        Krabs krabs = new Krabs("Крабс", null , new ArrayList<>(), new ArrayList<>());
+        krabs.addBodyParts(BodyParts.TEETH,BodyParts.CHEEKS,BodyParts.HANDS,BodyParts.HEAD,BodyParts.NOSE);
+        Soap soap = new Soap("кусок Мыла");
+        Powder powder = new Powder("Порошок");
+        Item toothbrush = new Item("Зубная щетка") {};
+        PieceOfCopperWire pieceOfCopperWire = new PieceOfCopperWire("кусок железной проволки");
+        Cylinder cylinder = new Cylinder("Цилиндр", new ArrayList<>());
+        Item towel = new Item("Полотенце") {};
+        Item hanky = new Item("Носовой платок"){};
+        Item oldNail = new Item("Старый гвоздь"){};
+        Item socks = new Item("Носки"){};
+        cylinder.addItemList(hanky,powder,socks,pieceOfCopperWire,soap,oldNail,towel);
+        Box box = new Box("Коробка", new ArrayList<>());
+        scooperfield.addItemList(things);
+        Shelf shelf = new Shelf("Полочка", new ArrayList<>());
+        StateSuitcase stateSuitcase = new StateSuitcase(cylinder,"\"Чемодан\"");
+        StateWarehouse stateWarehouse = new StateWarehouse(cylinder,"\"Склада\"");
+        StateHeadwear stateHeadwear = new StateHeadwear(cylinder,"\"Головной убор\"");
+        Cupboard сupboard = new Cupboard("Шкаф", new ArrayList<>());
+        shelf.addItemList(soap);
+        scooperfield.lookAround();
+        Scooperfield.StateFace stateface = new Scooperfield.StateFace();
+        stateface.smile();
+        System.out.println("или ");
+        stateface.disgust();
+        System.out.println("Не понятно");
+        scooperfield.thank(krabs);
+        scooperfield.changePlace(new Place("Ванная"));
+        scooperfield.takeOff(BodyParts.HEAD, cylinder);
+        scooperfield.takeItem(cylinder,scooperfield,hanky,powder,socks,pieceOfCopperWire,soap,oldNail,towel);
+        System.out.println(cylinder.getName() + " может.");
+        cylinder.changeStateCylinder(cylinder,stateSuitcase);
+        cylinder.changeStateCylinder(cylinder,stateWarehouse);
+        cylinder.changeStateCylinder(cylinder,stateHeadwear);
+        scooperfield.putItem(things, сupboard, scooperfield);
+        scooperfield.takeItem(cylinder, scooperfield,soap);
+        soap.smell(scooperfield);
+        scooperfield.see(soap, shelf, krabs);
+        scooperfield.putItem(soap, shelf, krabs);
+        scooperfield.see(soap,shelf, scooperfield);
+        scooperfield.see(soap, shelf, krabs);
+        scooperfield.lather(soap, krabs,BodyParts.HANDS,BodyParts.CHEEKS);
+        scooperfield.changeState(scooperfield,stateHappy);
+        System.out.println("Сэкономил!!!");
+        box.addItemList(powder, toothbrush);
+        scooperfield.takeItem(box, scooperfield,toothbrush);
+        System.out.print(scooperfield.getName());
+        scooperfield.brush(BodyParts.TEETH);
+        scooperfield.putItem(toothbrush, box, scooperfield);
+        scooperfield.takeItem(box,scooperfield,toothbrush);
+        scooperfield.putItem(toothbrush, box, krabs);
+        scooperfield.takeItem(box,krabs,toothbrush);
+        System.out.println("Какой пахнет лучше?");
+        System.out.print(scooperfield.getName());
+        scooperfield.sniff(powder);
+        powder.smell(scooperfield);
+        powder.smell(krabs);
+        System.out.print(scooperfield.getName());
+        scooperfield.sneeze();
+        powder.flyUp();
+        StateDespondency stateDespondency = new StateDespondency(scooperfield,"\"Уныние\"");
+        scooperfield.changeState(scooperfield,stateDespondency);
+        System.out.print(scooperfield.getName());
+        scooperfield.scatter(powder,krabs);
+        StateCalmedDown stateCalmedDown = new StateCalmedDown(scooperfield,"\"Спокойное\"");
+        scooperfield.changeState(scooperfield,stateCalmedDown);
+        scooperfield.takeItem(box,krabs,powder);
+        scooperfield.putItem(powder,box,krabs);
+        StateGood stateGood = new StateGood(scooperfield,"\"Хорошее\"");
+        scooperfield.changeState(scooperfield,stateGood);
+        scooperfield.changePlace(new Place("Комната"));
+        scooperfield.sayPhrase(scooperfield.getPhrase());
+        System.out.println("Конец истории!");
+    }
+}
+
